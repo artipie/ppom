@@ -178,7 +178,7 @@ SOFTWARE.
           <artifactId>qulice-maven-plugin</artifactId>
           <version>0.18.19</version>
           <configuration>
-            <license>file:${project.basedir}/LICENSE</license>
+            <license>file:${project.basedir}/LICENSE.txt</license>
             <excludes combine.children="append">
               <exclude>findbugs:.*</exclude>
               <exclude>duplicatefinder:.*</exclude>
