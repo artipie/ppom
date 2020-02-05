@@ -11,20 +11,18 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.artipie/ppom.svg)](https://maven-badges.herokuapp.com/maven-central/com.artipie/ppom)
 [![PDD status](http://www.0pdd.com/svg?name=artipie/ppom)](http://www.0pdd.com/p?name=artipie/ppom)
 
-This is a simple storage, used in a few other projects.
-
-This is the dependency you need:
-
+This is a parent [POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) for all
+Artipie Maven projects. Include it in project section of `pom.xml`:
 ```xml
-<dependency>
-  <groupId>com.artipie</groupId>
-  <artifactId>ppom</artifactId>
-  <version>[...]</version>
-</dependency>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId><!-- your artifact id --></artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <parent>
+    <groupId>com.artipie</groupId>
+    <artifactId>ppom</artifactId>
+    <version><!-- use latest version --></version>
+  </parent>
 ```
-
-Read the [Javadoc](http://www.javadoc.io/doc/com.artipie/ppom)
-for more technical details.
 
 ## How to contribute
 
