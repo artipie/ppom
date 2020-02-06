@@ -41,7 +41,6 @@ SOFTWARE.
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit-platform.version>5.4.2</junit-platform.version>
-    <rxjava.version>3.0.0-RC6</rxjava.version>
     <vertx.version>3.8.5</vertx.version>
   </properties>
   <licenses>
@@ -81,7 +80,7 @@ SOFTWARE.
       <dependency>
         <groupId>com.artipie</groupId>
         <artifactId>asto</artifactId>
-        <version>0.9.1</version>
+        <version>0.11.1</version>
       </dependency>
       <dependency>
         <groupId>org.cactoos</groupId>
