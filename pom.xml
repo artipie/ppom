@@ -42,6 +42,7 @@ SOFTWARE.
     <maven.compiler.target>11</maven.compiler.target>
     <junit-platform.version>5.4.2</junit-platform.version>
     <rxjava.version>3.0.0-RC6</rxjava.version>
+    <vertx.version>3.8.5</vertx.version>
   </properties>
   <licenses>
     <license>
@@ -107,6 +108,18 @@ SOFTWARE.
         <artifactId>javax.json</artifactId>
         <version>1.1</version>
       </dependency>
+      <!-- Vert.x -->
+      <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-core</artifactId>
+        <version>${vertx.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-rx-java2</artifactId>
+        <version>${vertx.version}</version>
+      </dependency>
+      <!-- RxJava -->
       <dependency>
         <groupId>com.github.akarnokd</groupId>
         <artifactId>rxjava2-jdk8-interop</artifactId>
