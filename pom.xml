@@ -211,6 +211,24 @@ SOFTWARE.
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.4</version>
+          <configuration>
+            <!--
+            using 8 version for javadoc sources,
+            since we don't use JDK9 modules,
+            and doesn't have module-info.java files
+            -->
+            <source>8</source>
+            <!--
+            ignore javadoc lint, since `checkstyle` and `todo`
+            are not valid javadoc statements
+            -->
+            <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
