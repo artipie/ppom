@@ -41,7 +41,7 @@ SOFTWARE.
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit-platform.version>5.4.2</junit-platform.version>
-    <vertx.version>3.8.5</vertx.version>
+    <vertx.version>4.0.0-SNAPSHOT</vertx.version>
   </properties>
   <licenses>
     <license>
@@ -70,6 +70,12 @@ SOFTWARE.
     <developerConnection>scm:git:ssh://github.com:artipie/ppom.git</developerConnection>
     <url>https://github.com/artipie/ppom/tree/master</url>
   </scm>
+  <repositories>
+    <repository>
+      <id>oss.sonatype.org</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -80,7 +86,7 @@ SOFTWARE.
       <dependency>
         <groupId>com.artipie</groupId>
         <artifactId>asto</artifactId>
-        <version>0.11.1</version>
+        <version>0.13.0</version>
       </dependency>
       <dependency>
         <groupId>org.cactoos</groupId>
