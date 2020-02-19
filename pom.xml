@@ -92,6 +92,12 @@ SOFTWARE.
         <artifactId>javax.json</artifactId>
         <version>1.1</version>
       </dependency>
+      <!-- Junit ext -->
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>${junit-platform.version}</version>
+      </dependency>
       <!-- Vert.x -->
       <dependency>
         <groupId>io.vertx</groupId>
