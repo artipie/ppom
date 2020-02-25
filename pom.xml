@@ -38,8 +38,8 @@ SOFTWARE.
   <description>Parent POM of Artipie</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <junit-platform.version>5.4.2</junit-platform.version>
     <vertx.version>3.8.5</vertx.version>
   </properties>
@@ -115,6 +115,11 @@ SOFTWARE.
         <artifactId>rxjava2-jdk8-interop</artifactId>
         <version>0.3.7</version>
       </dependency>
+      <dependency>
+        <groupId>org.reactivestreams</groupId>
+        <artifactId>reactive-streams</artifactId>
+        <version>1.0.3</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -153,6 +158,9 @@ SOFTWARE.
             <optimize>true</optimize>
             <showWarnings>true</showWarnings>
             <showDeprecation>true</showDeprecation>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+            <useIncrementalCompilation>false</useIncrementalCompilation>
             <compilerArgs>
               <arg>-Xlint</arg>
               <arg>-Werror</arg>
