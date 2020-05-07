@@ -240,6 +240,11 @@ SOFTWARE.
             <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.5</version>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
