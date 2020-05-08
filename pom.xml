@@ -42,6 +42,7 @@ SOFTWARE.
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit-platform.version>5.6.2</junit-platform.version>
     <vertx.version>3.9.0</vertx.version>
+    <javax.json.version>1.1.4</javax.json.version>
   </properties>
   <licenses>
     <license>
@@ -72,10 +73,29 @@ SOFTWARE.
   </scm>
   <dependencyManagement>
     <dependencies>
+       <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-dependencies</artifactId>
+        <version>${vertx.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit-platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>javax.json</groupId>
         <artifactId>javax.json-api</artifactId>
-        <version>1.1.4</version>
+        <version>${javax.json.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish</groupId>
+        <artifactId>javax.json</artifactId>
+        <version>${javax.json.version}</version>
       </dependency>
       <dependency>
         <groupId>com.artipie</groupId>
@@ -86,28 +106,6 @@ SOFTWARE.
         <groupId>org.cactoos</groupId>
         <artifactId>cactoos</artifactId>
         <version>0.43</version>
-      </dependency>
-      <dependency>
-        <groupId>org.glassfish</groupId>
-        <artifactId>javax.json</artifactId>
-        <version>1.1</version>
-      </dependency>
-      <!-- Junit ext -->
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-params</artifactId>
-        <version>${junit-platform.version}</version>
-      </dependency>
-      <!-- Vert.x -->
-      <dependency>
-        <groupId>io.vertx</groupId>
-        <artifactId>vertx-core</artifactId>
-        <version>${vertx.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.vertx</groupId>
-        <artifactId>vertx-rx-java2</artifactId>
-        <version>${vertx.version}</version>
       </dependency>
       <!-- RxJava -->
       <dependency>
