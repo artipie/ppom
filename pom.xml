@@ -277,6 +277,18 @@ SOFTWARE.
                   <goal>prepare-agent-integration</goal>
                 </goals>
               </execution>
+              <execution>
+                <id>jacoco-report</id>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>jacoco-report-integration</id>
+                <goals>
+                  <goal>report-integration</goal>
+                </goals>
+              </execution>
             </executions>
           </plugin>
         </plugins>
