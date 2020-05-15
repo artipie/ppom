@@ -73,7 +73,7 @@ SOFTWARE.
   </scm>
   <dependencyManagement>
     <dependencies>
-       <dependency>
+      <dependency>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-dependencies</artifactId>
         <version>${vertx.version}</version>
