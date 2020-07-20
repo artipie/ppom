@@ -20,4 +20,6 @@ jobs:
           restore-keys: |
             jdk-1.8-maven-
       - name: Deploy to Artipie central
-        run: mvn --settings=.release/settings.xml -B clean deploy -Partipie
+        run: |
+          mvn --settings=.release/settings.xml -B versions:set "-DnewVersion=${{ env.RELEASE_VERSION }}"
+          mvn --settings=.release/settings.xml -B clean deploy -Partipie-central
