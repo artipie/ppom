@@ -19,6 +19,8 @@ jobs:
           key: jdk-1.8-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             jdk-1.8-maven-
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
       - name: Deploy to Artipie central
         run: |
           mvn --settings=.release/settings.xml -B versions:set "-DnewVersion=${{ env.RELEASE_VERSION }}"
