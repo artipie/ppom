@@ -60,6 +60,19 @@ SOFTWARE.
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>artipie-central</id>
+      <name>Artipie central</name>
+      <url>https://central.artipie.com/artipie/maven</url>
+    </repository>
+  </repositories>
   <developers>
     <developer>
       <name>Kirill Che.</name>
@@ -325,6 +338,21 @@ SOFTWARE.
           </plugin>
         </plugins>
       </build>
+    </profile>
+    <profile>
+      <id>artipie-central</id>
+      <distributionManagement>
+        <repository>
+          <id>artipie-central</id>
+          <name>Artipie central</name>
+          <url>https://central.artipie.com/artipie/maven</url>
+        </repository>
+        <snapshotRepository>
+          <id>artipie-central</id>
+          <name>Artipie central</name>
+          <url>https://central.artipie.com/artipie/maven</url>
+        </snapshotRepository>
+      </distributionManagement>
     </profile>
   </profiles>
 </project>
