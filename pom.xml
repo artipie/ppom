@@ -345,12 +345,12 @@ SOFTWARE.
         <repository>
           <id>artipie-central</id>
           <name>Artipie central</name>
-          <url>https://central.artipie.com/artipie/maven</url>
+          <url>https://central.artipie.com/artipie/maven-private</url>
         </repository>
         <snapshotRepository>
           <id>artipie-central</id>
           <name>Artipie central</name>
-          <url>https://central.artipie.com/artipie/maven</url>
+          <url>https://central.artipie.com/artipie/maven-private</url>
         </snapshotRepository>
       </distributionManagement>
     </profile>
