@@ -65,9 +65,14 @@ SOFTWARE.
       <releases>
         <enabled>true</enabled>
       </releases>
-      <snapshots>
+      <id>central</id>
+      <name>Apache central</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <releases>
         <enabled>true</enabled>
-      </snapshots>
+      </releases>
       <id>artipie-central</id>
       <name>Artipie central</name>
       <url>https://central.artipie.com/artipie/maven</url>
