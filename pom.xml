@@ -32,7 +32,7 @@ SOFTWARE.
   <parent>
     <groupId>com.jcabi</groupId>
     <artifactId>parent</artifactId>
-    <version>0.50.1</version>
+    <version>0.50.7</version>
   </parent>
   <url>https://github.com/artipie/ppom</url>
   <description>Parent POM of Artipie</description>
