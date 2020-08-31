@@ -41,7 +41,7 @@ SOFTWARE.
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit-platform.version>5.6.2</junit-platform.version>
-    <vertx.version>3.9.0</vertx.version>
+    <vertx.version>3.9.2</vertx.version>
     <javax.json.version>1.1.4</javax.json.version>
   </properties>
   <licenses>
