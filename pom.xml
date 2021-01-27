@@ -69,14 +69,14 @@ SOFTWARE.
       <name>Apache central</name>
       <url>https://repo.maven.apache.org/maven2</url>
     </repository>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <id>artipie-central</id>
-      <name>Artipie central</name>
-      <url>https://central.artipie.com/artipie/maven</url>
-    </repository>
+    <!-- <repository> -->
+    <!--   <releases> -->
+    <!--     <enabled>true</enabled> -->
+    <!--   </releases> -->
+    <!--   <id>artipie-central</id> -->
+    <!--   <name>Artipie central</name> -->
+    <!--   <url>https://central.artipie.com/artipie/maven</url> -->
+    <!-- </repository> -->
   </repositories>
   <developers>
     <developer>
