@@ -43,6 +43,7 @@ SOFTWARE.
     <junit-platform.version>5.7.1</junit-platform.version>
     <vertx.version>3.9.2</vertx.version>
     <javax.json.version>1.1.4</javax.json.version>
+    <qulice.license>${project.basedir}/LICENSE.txt</qulice.license>
   </properties>
   <licenses>
     <license>
@@ -218,7 +219,7 @@ SOFTWARE.
           <artifactId>qulice-maven-plugin</artifactId>
           <version>0.18.19</version>
           <configuration>
-            <license>file:${project.basedir}/LICENSE.txt</license>
+            <license>file:${qulice.license}</license>
             <excludes combine.children="append">
               <exclude>findbugs:.*</exclude>
               <exclude>duplicatefinder:.*</exclude>
