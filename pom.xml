@@ -32,7 +32,7 @@ SOFTWARE.
   <parent>
     <groupId>com.jcabi</groupId>
     <artifactId>parent</artifactId>
-    <version>0.50.7</version>
+    <version>0.51.2</version>
   </parent>
   <url>https://github.com/artipie/ppom</url>
   <description>Parent POM of Artipie</description>
@@ -256,17 +256,6 @@ SOFTWARE.
     </pluginManagement>
   </build>
   <profiles>
-    <profile>
-      <id>qulice</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.qulice</groupId>
-            <artifactId>qulice-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
     <profile>
       <id>jacoco</id>
       <build>
