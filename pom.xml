@@ -252,6 +252,16 @@ SOFTWARE.
             <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>com.jcabi</groupId>
+          <artifactId>jcabi-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>jcabi-versionalize-packages</id>
+              <phase>none</phase>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
