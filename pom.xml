@@ -40,7 +40,7 @@ SOFTWARE.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <junit-platform.version>5.7.1</junit-platform.version>
+    <junit-platform.version>5.8.1</junit-platform.version>
     <vertx.version>3.9.2</vertx.version>
     <javax.json.version>1.1.4</javax.json.version>
     <qulice.license>${project.basedir}/LICENSE.txt</qulice.license>
@@ -192,7 +192,7 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.0.0-M4</version>
+          <version>3.0.0-M5</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -212,7 +212,7 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.2</version>
         </plugin>
         <plugin>
           <groupId>com.qulice</groupId>
