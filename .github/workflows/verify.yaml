@@ -16,7 +16,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           distribution: temurin
-          java-version: 17
+          java-version: "17"
        - name: Verify
          run: ./scripts/verify.sh artipie/artipie
   asto:
