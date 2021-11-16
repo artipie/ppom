@@ -73,3 +73,14 @@ jobs:
           java-version: 17
       - name: Verify
         run: ./scripts/verify.sh artipie/npm-adapter
+  gem-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 17
+      - name: Verify
+        run: ./scripts/verify.sh artipie/helm-adapter
