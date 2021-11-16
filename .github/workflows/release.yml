@@ -1,11 +1,11 @@
 name: Create Maven release
 on:
-  push:
+  create:
     tags:
-      - '.*'
+      - .*
 jobs:
-  build:
-    name: Build release
+  deploy:
+    name: Deploy release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.3
