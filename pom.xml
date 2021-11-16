@@ -29,15 +29,11 @@ SOFTWARE.
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>${project.groupId}:${project.artifactId}</name>
-  <parent>
-    <groupId>com.jcabi</groupId>
-    <artifactId>parent</artifactId>
-    <version>0.51.2</version>
-  </parent>
   <url>https://github.com/artipie/ppom</url>
   <description>Parent POM of Artipie</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit-platform.version>5.8.1</junit-platform.version>
@@ -70,14 +66,6 @@ SOFTWARE.
       <name>Apache central</name>
       <url>https://repo.maven.apache.org/maven2</url>
     </repository>
-    <!-- <repository> -->
-    <!--   <releases> -->
-    <!--     <enabled>true</enabled> -->
-    <!--   </releases> -->
-    <!--   <id>artipie-central</id> -->
-    <!--   <name>Artipie central</name> -->
-    <!--   <url>https://central.artipie.com/artipie/maven</url> -->
-    <!-- </repository> -->
   </repositories>
   <developers>
     <developer>
@@ -116,11 +104,6 @@ SOFTWARE.
         <artifactId>javax.json</artifactId>
         <version>${javax.json.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.cactoos</groupId>
-        <artifactId>cactoos</artifactId>
-        <version>0.46</version>
-      </dependency>
       <!-- RxJava -->
       <dependency>
         <groupId>com.github.akarnokd</groupId>
@@ -131,6 +114,51 @@ SOFTWARE.
         <groupId>org.reactivestreams</groupId>
         <artifactId>reactive-streams</artifactId>
         <version>1.0.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.30</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.8.0-beta1</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest</artifactId>
+        <version>2.2</version>
+      </dependency>
+      <dependency>
+        <groupId>com.jcabi</groupId>
+        <artifactId>jcabi-log</artifactId>
+        <version>0.20.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.jcabi</groupId>
+        <artifactId>jcabi-matchers</artifactId>
+        <version>1.5.3</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.11.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.12.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>30.1.1-jre</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -150,6 +178,11 @@ SOFTWARE.
           <artifactId>jsr305</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
@@ -189,10 +222,26 @@ SOFTWARE.
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
+          <configuration>
+            <useFile>false</useFile>
+            <trimStackTrace>false</trimStackTrace>
+            <failIfNoTests>true</failIfNoTests>
+            <failIfNoSpecifiedTests>true</failIfNoSpecifiedTests>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>3.0.0-M5</version>
+          <configuration>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <failIfNoSpecifiedTests>false</failIfNoSpecifiedTests>
+            <forkCount>0</forkCount>
+            <parallel>all</parallel>
+            <parallelTestsTimeoutForcedInSeconds>0</parallelTestsTimeoutForcedInSeconds>
+            <parallelTestsTimeoutInSeconds>0</parallelTestsTimeoutInSeconds>
+            <perCoreThreadCount>true</perCoreThreadCount>
+            <trimStackTrace>false</trimStackTrace>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -252,20 +301,120 @@ SOFTWARE.
             <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>com.jcabi</groupId>
-          <artifactId>jcabi-maven-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>jcabi-versionalize-packages</id>
-              <phase>none</phase>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M3</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.4.0,)</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <profiles>
+    <profile>
+      <id>sonatype</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <artifactId>maven-deploy-plugin</artifactId>
+              <configuration>
+                <skip>true</skip>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+          <plugin>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>jar-sources</id>
+                <configuration>
+                  <forceCreation>true</forceCreation>
+                </configuration>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>jar-javadoc</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <additionalparam>${javadoc.opts}</additionalparam>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.7</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>oss.sonatype.org</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <description>${project.version}</description>
+              <stagingProgressTimeoutMinutes>10</stagingProgressTimeoutMinutes>
+            </configuration>
+            <executions>
+              <execution>
+                <id>deploy-sonatype</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>deploy</goal>
+                  <goal>release</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+   <profile>
+      <id>qulice</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.qulice</groupId>
+            <artifactId>qulice-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>qulice-check</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <profile>
       <id>jacoco</id>
       <build>
@@ -322,7 +471,7 @@ SOFTWARE.
             <version>3.0.1</version>
             <executions>
               <execution>
-                <id>jcabi-sign-artifacts</id>
+                <id>sign-artifacts</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>sign</goal>
