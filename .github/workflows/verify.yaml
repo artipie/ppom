@@ -1,0 +1,81 @@
+name: Verify adapters
+"on":
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  artipie:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/artipie
+  asto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/asto
+  http:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/http
+  rpm-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/rpm-adapter
+  npm-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/npm-adapter
+  gem-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          distribution: adopt
+          java-version: 17
+       - name: Verify
+         run: ./scripts/verify.sh artipie/npm-adapter
