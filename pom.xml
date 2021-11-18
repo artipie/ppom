@@ -304,7 +304,7 @@ SOFTWARE.
             ignore javadoc lint, since `checkstyle` and `todo`
             are not valid javadoc statements
             -->
-            <additionalparam>-Xdoclint:none</additionalparam>
+            <doclint>none</doclint>
           </configuration>
         </plugin>
       </plugins>
@@ -370,9 +370,6 @@ SOFTWARE.
                 <goals>
                   <goal>jar</goal>
                 </goals>
-                <configuration>
-                  <additionalparam>${javadoc.opts}</additionalparam>
-                </configuration>
               </execution>
             </executions>
           </plugin>
