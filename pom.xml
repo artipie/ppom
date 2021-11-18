@@ -311,6 +311,20 @@ SOFTWARE.
     </pluginManagement>
     <plugins>
       <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <parallel>none</parallel>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.0.0-M3</version>
