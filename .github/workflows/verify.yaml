@@ -72,7 +72,7 @@ jobs:
           distribution: adopt
           java-version: 17
       - name: Verify
-        run: ./scripts/verify.sh artipie/npm-adapter
+        run: ./scripts/verify.sh artipie/gem-adapter
   helm-adapter:
     runs-on: ubuntu-latest
     steps:
