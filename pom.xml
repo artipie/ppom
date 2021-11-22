@@ -412,7 +412,7 @@ SOFTWARE.
         </plugins>
       </build>
     </profile>
-   <profile>
+    <profile>
       <id>qulice</id>
       <build>
         <plugins>
