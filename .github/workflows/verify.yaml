@@ -95,4 +95,14 @@ jobs:
           java-version: 17
       - name: Verify
         run: ./scripts/verify.sh artipie/conan-adapter
-
+  docker-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 17
+      - name: Verify
+        run: ./scripts/verify.sh artipie/docker-adapter
