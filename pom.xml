@@ -79,6 +79,7 @@ SOFTWARE.
     <junit-platform.version>5.8.2</junit-platform.version>
     <vertx.version>4.2.7</vertx.version>
     <slf4j.version>1.7.36</slf4j.version>
+    <logback.version>1.2.11</logback.version>
     <javax.json.version>1.1.4</javax.json.version>
 
     <surefire.version>3.0.0-M6</surefire.version>
@@ -112,7 +113,6 @@ SOFTWARE.
         <artifactId>javax.json</artifactId>
         <version>${javax.json.version}</version>
       </dependency>
-      <!-- RxJava -->
       <dependency>
         <groupId>com.github.akarnokd</groupId>
         <artifactId>rxjava2-jdk8-interop</artifactId>
@@ -144,6 +144,11 @@ SOFTWARE.
         <version>v2.3.2+java8</version>
       </dependency>
       <dependency>
+        <groupId>wtf.g4s8</groupId>
+        <artifactId>tuples</artifactId>
+        <version>0.1.2</version>
+      </dependency>
+      <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j.version}</version>
@@ -157,6 +162,16 @@ SOFTWARE.
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
         <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
       </dependency>
       <dependency>
         <groupId>ch.qos.reload4j</groupId>
