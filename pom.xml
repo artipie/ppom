@@ -24,29 +24,23 @@ SOFTWARE.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.artipie</groupId>
   <artifactId>ppom</artifactId>
   <version>2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <name>${project.groupId}:${project.artifactId}</name>
-  <url>https://github.com/artipie/ppom</url>
   <description>Parent POM of Artipie</description>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <junit-platform.version>5.8.2</junit-platform.version>
-    <vertx.version>4.2.3</vertx.version>
-    <javax.json.version>1.1.4</javax.json.version>
-    <qulice.license>${project.basedir}/LICENSE.txt</qulice.license>
-  </properties>
+  <url>https://github.com/artipie/ppom</url>
+
   <licenses>
     <license>
       <name>MIT License</name>
       <url>https://github.com/artipie/ppom/blob/master/LICENSE</url>
     </license>
   </licenses>
+
   <distributionManagement>
     <repository>
       <id>oss.sonatype.org</id>
@@ -57,16 +51,7 @@ SOFTWARE.
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <id>central</id>
-      <name>Apache central</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
+
   <developers>
     <developer>
       <id>github.com/g4s8</id>
@@ -79,11 +64,26 @@ SOFTWARE.
       </roles>
     </developer>
   </developers>
+
   <scm>
     <connection>scm:git:git://github.com/artipie/ppom.git</connection>
     <developerConnection>scm:git:ssh://github.com:artipie/ppom.git</developerConnection>
     <url>https://github.com/artipie/ppom/tree/master</url>
   </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.release>8</maven.compiler.release>
+
+    <junit-platform.version>5.8.2</junit-platform.version>
+    <vertx.version>4.2.7</vertx.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <javax.json.version>1.1.4</javax.json.version>
+
+    <qulice.license>${project.basedir}/LICENSE.txt</qulice.license>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -124,17 +124,22 @@ SOFTWARE.
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.32</version>
+        <version>${slf4j.version}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>2.0.0-alpha6</version>
+        <version>${slf4j.version}</version>
       </dependency>
       <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.17</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.reload4j</groupId>
+        <artifactId>reload4j</artifactId>
+        <version>1.2.20</version>
       </dependency>
       <dependency>
         <groupId>org.hamcrest</groupId>
@@ -168,6 +173,7 @@ SOFTWARE.
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
@@ -191,12 +197,13 @@ SOFTWARE.
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -204,13 +211,12 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.10.1</version>
           <configuration>
             <optimize>true</optimize>
             <showWarnings>true</showWarnings>
             <showDeprecation>true</showDeprecation>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
+            <release>${maven.compiler.release}</release>
             <useIncrementalCompilation>false</useIncrementalCompilation>
             <compilerArgs>
               <arg>-Xlint</arg>
@@ -227,7 +233,7 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M5</version>
+          <version>3.0.0-M6</version>
           <configuration>
             <useFile>false</useFile>
             <trimStackTrace>false</trimStackTrace>
@@ -237,17 +243,25 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.0.0-M5</version>
+          <version>3.0.0-M6</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <failIfNoSpecifiedTests>false</failIfNoSpecifiedTests>
             <forkCount>0</forkCount>
-            <parallel>all</parallel>
+            <parallel>none</parallel>
             <parallelTestsTimeoutForcedInSeconds>0</parallelTestsTimeoutForcedInSeconds>
             <parallelTestsTimeoutInSeconds>0</parallelTestsTimeoutInSeconds>
             <perCoreThreadCount>true</perCoreThreadCount>
             <trimStackTrace>false</trimStackTrace>
           </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -263,11 +277,11 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.11.0</version>
+          <version>3.12.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.2.2</version>
         </plugin>
         <plugin>
           <groupId>com.qulice</groupId>
@@ -292,7 +306,7 @@ SOFTWARE.
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.1</version>
+          <version>3.4.0</version>
           <configuration>
             <!--
             using 8 version for javadoc sources,
@@ -307,45 +321,45 @@ SOFTWARE.
             <doclint>none</doclint>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>[3.8.5,)</version>
+                  </requireMavenVersion>
+                  <requireJavaVersion>
+                    <version>17</version>
+                  </requireJavaVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.8</version>
+        </plugin>
       </plugins>
     </pluginManagement>
+
     <plugins>
-      <plugin>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <configuration>
-          <parallel>none</parallel>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>enforce-maven</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <version>[3.4.0,)</version>
-                </requireMavenVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
+
   <profiles>
     <profile>
       <id>sonatype</id>
@@ -390,7 +404,7 @@ SOFTWARE.
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.11</version>
+            <version>1.6.12</version>
             <extensions>true</extensions>
             <configuration>
               <serverId>oss.sonatype.org</serverId>
@@ -439,7 +453,6 @@ SOFTWARE.
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.7</version>
             <configuration>
               <output>file</output>
             </configuration>
