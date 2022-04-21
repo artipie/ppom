@@ -81,6 +81,8 @@ SOFTWARE.
     <slf4j.version>1.7.36</slf4j.version>
     <javax.json.version>1.1.4</javax.json.version>
 
+    <surefire.version>3.0.0-M6</surefire.version>
+
     <qulice.license>${project.basedir}/LICENSE.txt</qulice.license>
   </properties>
 
@@ -117,9 +119,29 @@ SOFTWARE.
         <version>0.3.7</version>
       </dependency>
       <dependency>
+        <groupId>com.github.akarnokd</groupId>
+        <artifactId>rxjava2-extensions</artifactId>
+        <version>0.20.10</version>
+      </dependency>
+      <dependency>
         <groupId>org.reactivestreams</groupId>
         <artifactId>reactive-streams</artifactId>
         <version>1.0.3</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.resilience4j</groupId>
+        <artifactId>resilience4j-retry</artifactId>
+        <version>1.7.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.cqfn</groupId>
+        <artifactId>rio</artifactId>
+        <version>0.3</version>
+      </dependency>
+      <dependency>
+        <groupId>wtf.g4s8</groupId>
+        <artifactId>mime</artifactId>
+        <version>v2.3.2+java8</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -128,7 +150,7 @@ SOFTWARE.
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
+        <artifactId>slf4j-reload4j</artifactId>
         <version>${slf4j.version}</version>
       </dependency>
       <dependency>
@@ -155,6 +177,11 @@ SOFTWARE.
         <groupId>com.jcabi</groupId>
         <artifactId>jcabi-matchers</artifactId>
         <version>1.5.3</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.15</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>
@@ -233,7 +260,7 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M6</version>
+          <version>${surefire.version}</version>
           <configuration>
             <useFile>false</useFile>
             <trimStackTrace>false</trimStackTrace>
@@ -243,7 +270,7 @@ SOFTWARE.
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.0.0-M6</version>
+          <version>${surefire.version}</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <failIfNoSpecifiedTests>false</failIfNoSpecifiedTests>
