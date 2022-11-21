@@ -18,7 +18,7 @@ https://github.com/artipie/ppom/blob/master/LICENSE.txt
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit-platform.version>5.8.2</junit-platform.version>
-    <vertx.version>4.2.3</vertx.version>
+    <vertx.version>4.3.5</vertx.version>
     <javax.json.version>1.1.4</javax.json.version>
     <qulice.license>${project.basedir}/LICENSE.header</qulice.license>
   </properties>
