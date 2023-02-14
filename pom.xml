@@ -208,7 +208,7 @@ https://github.com/artipie/ppom/blob/master/LICENSE.txt
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M5</version>
+          <version>3.0.0-M9</version>
           <configuration>
             <useFile>false</useFile>
             <trimStackTrace>false</trimStackTrace>
